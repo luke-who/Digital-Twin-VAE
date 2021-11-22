@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 [![python](https://img.shields.io/badge/python-3.9.8-blue?style=plastic&logo=python)](https://www.python.org/downloads/release/python-398/)
 [![pip](https://img.shields.io/badge/pip-v21.2.4-informational?&logo=pypi)](https://pypi.org/project/pip/21.2.4/)
-[![matlab](https://img.shields.io/badge/MATLAB-R2021a-informational?&logo=data:icons8-matlab.svg)](https://pypi.org/project/pip/21.2.4/)
+[![matlab](https://img.shields.io/badge/MATLAB-R2021a-informational?&logo=https://raw.githubusercontent.com/luke-who/Digital-Twin-4th-Year/main/icons8-matlab.svg)](https://uk.mathworks.com/downloads/)
 
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.10-orange?logo=PyTorch)](https://github.com/pytorch/pytorch/releases/tag/v1.10.0)
 [![macOS Monterey 12.0](https://img.shields.io/badge/macOS%20Monterey-12.0-megenta?&color=E95420&logo=macOS)](https://www.apple.com/uk/macos/monterey/)
