@@ -23,11 +23,11 @@ The aim is to build a scalable, lightweight digital twin solution for the existi
 # Getting Started
 -----------------------------------------------------------------------------------
 <!-- TODO: Guide users through getting your code up and running on their own system. In this section you can talk about: -->
-## 1.    Installation process on Ubuntu
+## 1.    Installation process
 
 For setting up GCP, since the algorithm is not memory optimised, the memory usage was very intensive while running different reduction functions in `tff_vary_num_clients_and_rounds.py`.  This is likely due to the fact that TFF is not currently optimised for selecting a varying number of clients as it seems to mess up 
 with the state during the iterative process and taking up huge accumulative memory.  As a result, the RAM in VM required on GCP for running tff_vary_num_clients_and_rounds.py was 128GB, at its peak it's using around 50% of the total memory so it's sth to keep in mind. 
-### Install TensorFlow with pip
+### Install Pytorch
 1. Install the Python development environment on your system
 
     `sudo apt update ; sudo apt upgrade`
@@ -64,41 +64,23 @@ with the state during the iterative process and taking up huge accumulative memo
 
     `(venv) $ python -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"`
 
-### Install the released TensorFlow Federated Python package
-1. Install Tensorflow Federated 
+### Install [DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator)
+1. Install 
 
-    `(venv) $ pip install tensorflow-federated==0.18.0`
+    ``
 
-2. Test Tensorflow Federated 
+2. Test DRIVE
 
-    `(venv) $ python -c "import tensorflow_federated as tff; print(tff.federated_computation(lambda: 'Hello World')())"`
+    ``
 
-3. Exit virtualenv until you're done using tensorflow/tensorflow-federated
-
-    `(venv) $ deactivate`
 
 ## 2.    Software dependencies
 ### Python version
-The python version in this project throughout was [3.8.8](https://www.python.org/downloads/release/python-388/), [pyenv](https://github.com/pyenv/pyenv) was used to manage different python versions
+The python version in this project throughout was [3.9.8](https://www.python.org/downloads/release/python-388/), [pyenv](https://github.com/pyenv/pyenv) was used to manage different python versions
 ### pypi packages
 All the dependacies, versions and necessary packages are exported & listed in [requirements.txt](requirements.txt)(albeit not all of them are useful to run on local machines). 
 ### To install the requirements, do `pip3 install -r requirements.txt`
-### Dealing with OSError: [Errno 24] Too many open files
-First `sudo nano /etc/pam.d/common-session`
 
-Then add `session required pam_limits.so` to `/etc/pam.d/common-session`
-
-Then `sudo nano /etc/security/limits.conf`
-
-add
-
-`*          hard    nofile      500000`
-
-`*          soft    nofile      500000`
-
-Then set 
-
-`ulimit -n 500000`
 
 ## 3.	Latest releases
 ## 4.	API references
@@ -121,7 +103,7 @@ The mode you can select are: MODE = `[constant,exponential,linear,sigmoid,recipr
 <!-- `python3 tff_vary_num_clients_and_rounds.py mode &` to run it in the background -->
 
 
-## Running plot.py:
+## Running nn.py:
 
 `python3 plot.py mode` to run the script with different mode arguments.
 <!-- `python3 tff_vary_num_clients_and_rounds.py mode &` to run it in the background -->
