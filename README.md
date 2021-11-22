@@ -10,7 +10,7 @@ This project uses [DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator) 
 [![build running](https://camo.githubusercontent.com/5f0fabd6204876617cdc4ef33c48da33ac049e53a38eae71b239f8450776fe48/68747470733a2f2f706f77657263692e6f73756f736c2e6f72672f6a6f622f7079746f7263682d6d61737465722d6e696768746c792d7079332d6c696e75782d70706336346c652d6770752f62616467652f69636f6e)](https://camo.githubusercontent.com/5f0fabd6204876617cdc4ef33c48da33ac049e53a38eae71b239f8450776fe48/68747470733a2f2f706f77657263692e6f73756f736c2e6f72672f6a6f622f7079746f7263682d6d61737465722d6e696768746c792d7079332d6c696e75782d70706336346c652d6770752f62616467652f69636f6e)
 
 ## Motivation 
-This project attempted to explore the communication efficiency and scalibility of the existing federated machine learning techniques and possible improvements and futher optimisation 
+This project attempted to explore the communication efficiency and scalibility of the existing DRIVE simulator and possible improvements and futher optimisation 
 ## Aim
 The aim is to build a scalable, lightweight digital twin solution for the existing 5G network and future networks
 
