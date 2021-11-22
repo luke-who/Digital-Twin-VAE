@@ -30,39 +30,8 @@ with the state during the iterative process and taking up huge accumulative memo
 ### Install Pytorch
 1. Install the Python development environment on your system
 
-    `sudo apt update ; sudo apt upgrade`
+    `pip3 install torch torchvision`
 
-    `sudo apt install python3-dev python3-pip python3-venv`
-2. Check python3 and pip3 version
-
-    `python3 --version`
-
-    `pip3 --version`
-3. Create a virtual environment (recommended)
-
-    `python3 -m venv --system-site-packages ./venv`
-
-    activate it `source ~/venv/bin/activate`
-4. Go inside created virtual environment
-
-    `cd venv`
-
-    upgrade pip
-
-    `(venv) $ pip install --upgrade pip`
-
-    list packages installed within the virtual environment
-
-    `(venv) $ pip list`
-5. Install the TensorFlow pip package 
-
-    `(venv) $ pip install testresources`
-
-    `(venv) $ pip install tensorflow==2.4.1`
-
-6. Verify the install:
-
-    `(venv) $ python -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"`
 
 ### Install [DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator)
 1. Install 
