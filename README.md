@@ -58,19 +58,6 @@ All the dependacies, versions and necessary packages are exported & listed in [r
 # Build and Test
 -----------------------------------------------------------------------------------
 <!-- TODO: Describe and show how to build your code and run the tests.  -->
-## Running tff_vary_num_clients_and_rounds.py:
-
-`python3 tff_vary_num_clients_and_rounds.py MODE` to run the script with different mode arguments.
-<!-- `python3 tff_vary_num_clients_and_rounds.py mode &` to run it in the background -->
-
-
-The mode you can select are: MODE = `[constant,exponential,linear,sigmoid,reciprocal]`
-
-
-## Running tff_UNIFORM_vs_NUM_EXAMPLES.py & tff_train_test_split.py (in 'other' folder):
-
-`python3 tff_UNIFORM_vs_NUM_EXAMPLES.py` and `python3 tff_train_test_split.py` respectively to run these two scripts, no arguments/mode needed.
-<!-- `python3 tff_vary_num_clients_and_rounds.py mode &` to run it in the background -->
 
 
 ## Running nn.py:
