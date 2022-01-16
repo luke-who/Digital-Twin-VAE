@@ -17,7 +17,7 @@ The aim is to build a scalable, lightweight digital twin solution for the existi
 ## Objectives
 * Research the necessary library and development environment to conduct various FL simulations
 * Create suitable unbalanced dataset, to simulate real world FL system and evaluate corresponding methods
-* Build FL model with existing machine learning framework using basic model aggregation such as averaged weights update ($Fed\Avg$)
+* Build FL model with existing machine learning framework using basic model aggregation such as averaged weights update (*Fed_Avg*)
 * Investigate the effect of parameters: number of clients, rounds, epochs, learning rate, optimisation functions on the global model 
 * Benchmark the FL algorithm, use metrics such as learning accuracy and loss to evaluate model performance and convergence rate by deploying different communication reduction strategies
 * Choose the best method out of all proposed reduction strategies for optimising communication, calculate the amount of reduction achieved
