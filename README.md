@@ -27,6 +27,12 @@ The aim is to build a scalable, lightweight digital twin solution for the existi
 <!-- TODO: Guide users through getting your code up and running on their own system. In this section you can talk about: -->
 ## 1.    Installation process
 
+### Add-Ons Requirements for [DRIVE_Simulator](https://github.com/ioannismavromatis/DRIVE_Simulator)
+* [Parallel Computing Toolbox](https://uk.mathworks.com/help/parallel-computing/getting-started-with-parallel-computing-toolbox.html) Perform parallel computations on multicore computers, GPUs, and computer clusters
+* [Mapping Toolbox](https://uk.mathworks.com/help/map/index.html) Analyze and visualize geographic information
+* [Statistics and Machine Learning Toolbox](https://uk.mathworks.com/help/stats/) Analyze and model data using statistics and machine learning
+* [MATLAB Support for MinGW-w64 C/C++ Compiler](https://uk.mathworks.com/matlabcentral/fileexchange/52848-matlab-support-for-mingw-w64-c-c-compiler) Install the MinGW-w64 C/C++ compiler for Windows (If the OS running is Windows)
+
 For setting up GCP, since the algorithm is not memory optimised, the memory usage was very intensive while running different reduction functions in `tff_vary_num_clients_and_rounds.py`.  This is likely due to the fact that TFF is not currently optimised for selecting a varying number of clients as it seems to mess up 
 with the state during the iterative process and taking up huge accumulative memory.  As a result, the RAM in VM required on GCP for running tff_vary_num_clients_and_rounds.py was 128GB, at its peak it's using around 50% of the total memory so it's sth to keep in mind. 
 ### Install Pytorch
