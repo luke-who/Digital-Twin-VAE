@@ -47,3 +47,17 @@ Then you can verify the two libraries have been loaded:
 ```
 version -blas;version -lapack
 ```
+## Warning: Escaped character '\P' is not valid. See 'doc sprintf' for supported special characters.
+This is because the `SIMULATOR.sumoPath` variable in [*/DRIVE_Simulator/simSettings.m*](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/simSettings.m) is not set correctly
+### Example Solution:
+```
+SIMULATOR.sumoPath = 'C:\Program Files\Eclipse\Sumo\bin\' %the sumo's bin path depends on its installation
+```
+
+## Error in height (line 10) H = size(X,1); Error in loadRATs (line 84) BS.(ratName).height = height;
+This is because the *[height](https://uk.mathworks.com/help/matlab/ref/height.html#mw_0c0894e1-3181-4045-923b-45aab2f657d4)* function returns the number of rows of an input array in newer version of MATLAB(changed in R2020b). In the original version of DRIVE, the variable that defines mmWave basestation hight range ([*DRIVE_Simulator/ratToolbox/available/mmWaves.m*](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/440cbab1e6f1d4c6b0f28f074b02c4fce0379ee0/ratToolbox/available/mmWaves.m)) is also `height`. This causes a conflict in MATLAB as it thinks we're trying to call the *[height](https://uk.mathworks.com/help/matlab/ref/height.html#mw_0c0894e1-3181-4045-923b-45aab2f657d4)* function instead of our defined variable `height`.
+### Solution:
+Simply change the variable to a different name (ie `height` -> `mmWaveheight`):
+```
+mmWaveheight = [ 5 15 ];
+```
