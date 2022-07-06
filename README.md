@@ -25,23 +25,16 @@ The aim is to build a scalable, lightweight digital twin solution for the existi
 # Getting Started
 -----------------------------------------------------------------------------------
 <!-- TODO: Guide users through getting your code up and running on their own system. In this section you can talk about: -->
+
 ## 1.    Installation process
-
-### Add-Ons Requirements for [DRIVE_Simulator](https://github.com/ioannismavromatis/DRIVE_Simulator)
-* [Parallel Computing Toolbox](https://uk.mathworks.com/help/parallel-computing/getting-started-with-parallel-computing-toolbox.html) Perform parallel computations on multicore computers, GPUs, and computer clusters
-* [Mapping Toolbox](https://uk.mathworks.com/help/map/index.html) Analyze and visualize geographic information
-* [Statistics and Machine Learning Toolbox](https://uk.mathworks.com/help/stats/) Analyze and model data using statistics and machine learning
-* [MATLAB Support for MinGW-w64 C/C++ Compiler](https://uk.mathworks.com/matlabcentral/fileexchange/52848-matlab-support-for-mingw-w64-c-c-compiler) Install the MinGW-w64 C/C++ compiler for Windows (If the OS running is Windows)
-
-For setting up GCP, since the algorithm is not memory optimised, the memory usage was very intensive while running different reduction functions in `tff_vary_num_clients_and_rounds.py`.  This is likely due to the fact that TFF is not currently optimised for selecting a varying number of clients as it seems to mess up 
-with the state during the iterative process and taking up huge accumulative memory.  As a result, the RAM in VM required on GCP for running tff_vary_num_clients_and_rounds.py was 128GB, at its peak it's using around 50% of the total memory so it's sth to keep in mind. 
 ### Install Pytorch
 1. Install the Python development environment on your system
 
     `pip3 install torch torchvision`
 
+### Install [DRIVE_Simulator](https://github.com/ioannismavromatis/DRIVE_Simulator)
+The installation process for DRIVE can be found in [userManualDRIVE.pdf](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/doc/userManualDRIVE.pdf)
 
-### Install [DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator)
 1. Install 
 
     ``
@@ -49,23 +42,34 @@ with the state during the iterative process and taking up huge accumulative memo
 2. Test DRIVE
 
     ``
-
+### Install [traci4matlab](https://github.com/pipeacosta/traci4matlab)
+See instructions [here](https://github.com/pipeacosta/traci4matlab/blob/master/user_manual.pdf)
 
 ## 2.    Software dependencies
-### Python version
-The python version in this project throughout was [3.9.8](https://www.python.org/downloads/release/python-388/), [pyenv](https://github.com/pyenv/pyenv) was used to manage different python versions
-### pypi packages
-All the dependacies, versions and necessary packages are exported & listed in [requirements.txt](requirements.txt)(albeit not all of them are useful to run on local machines). 
-### To install the requirements, do `pip3 install -r requirements.txt`
+### Add-Ons Requirements for [DRIVE_Simulator](https://github.com/ioannismavromatis/DRIVE_Simulator)
+* [Parallel Computing Toolbox](https://uk.mathworks.com/help/parallel-computing/getting-started-with-parallel-computing-toolbox.html) Perform parallel computations on multicore computers, GPUs, and computer clusters
+* [Mapping Toolbox](https://uk.mathworks.com/help/map/index.html) Analyze and visualize geographic information
+* [Statistics and Machine Learning Toolbox](https://uk.mathworks.com/help/stats/) Analyze and model data using statistics and machine learning
+* [MATLAB Support for MinGW-w64 C/C++ Compiler](https://uk.mathworks.com/matlabcentral/fileexchange/52848-matlab-support-for-mingw-w64-c-c-compiler) Install the MinGW-w64 C/C++ compiler for Windows (If the OS running is Windows)
+    
+ ### pypi packages
+All the dependacies, versions and necessary packages are exported & listed in [requirements.txt](requirements.txt)(albeit not all of them are useful to run on local machines). To install the requirements, do 
+```
+pip3 install -r requirements.txt
+```
 
 
-## 3.	Latest releases
-## 4.	API references
+## 3. Debugging 
+Any installation debugging can be found in [Debug/README.md](Debug/README.md)
 
-# Build and Test
+<!-- ## 3.	Latest releases -->
+<!-- ## 4.	API references -->
+
+# Running the Simulator
 -----------------------------------------------------------------------------------
-<!-- TODO: Describe and show how to build your code and run the tests.  -->
+<!-- TODO: Describe and show how to run your code and run the tests.  -->
 
+# Running the nn
 
 ## Running nn.py:
 
