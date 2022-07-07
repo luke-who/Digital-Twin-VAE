@@ -39,7 +39,7 @@ Enter two lines of code in the MATLAB Command Window:
 setenv('BLAS_VERSION', 'mkl.dll');
 setenv('LAPACK_VERSION', 'mkl.dll');
 ```
-(Alternatively add them to [runSimulator.m](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/runSimulator.m))
+(Alternatively add them to [runSimulator.m](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/runSimulator.m)).
 Then you can verify the two libraries have been loaded: 
 ```
 version -blas;version -lapack
