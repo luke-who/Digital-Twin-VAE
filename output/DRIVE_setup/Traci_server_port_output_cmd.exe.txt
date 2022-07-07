@@ -1,0 +1,34 @@
+***Starting server on port 8813 ***
+Loading net-file from './mobilityFiles/sumoFiles/manhattanLarge/manhattanLarge.net.xml' ... done (1805ms).
+Loading additional-files from './mobilityFiles/sumoFiles/manhattanLarge/manhattanLarge.poly.xml' ... done (397ms).
+Loading done.
+Simulation version 1.13.0 started with time: 0.00
+Simulation ended at time: 201.00
+Reason: TraCI requested termination.
+Performance:
+ Duration: 724.76s
+ TraCI-Duration: 375.39s
+ Real time factor: 0.277334
+ UPS: 23.058731
+ UPS-Persons: 24.977993
+Vehicles:
+ Inserted: 172 (Loaded: 174)
+ Running: 168
+ Waiting: 0
+Persons:
+ Inserted: 184
+ Running: 179
+Statistics (avg):
+ RouteLength: 541.03
+ Speed: 5.04
+ Duration: 102.00
+ WaitingTime: 35.00
+ TimeLoss: 50.91
+ DepartDelay: 0.00
+Pedestrian Statistics (avg of 3 walks):
+ RouteLength: 124.14
+ Duration: 111.67
+ TimeLoss: 12.76
+
+DijkstraRouter answered 1645 queries and explored 14.99 edges on average.
+DijkstraRouter spent 0.01s answering queries (0.00ms on average).
