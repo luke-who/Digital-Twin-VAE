@@ -7,7 +7,7 @@
 
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.10-orange?logo=PyTorch)](https://github.com/pytorch/pytorch/releases/tag/v1.10.0)
 [![macOS Monterey 12.0](https://img.shields.io/badge/macOS%20Monterey-12.0-megenta?&color=E95420&logo=macOS)](https://www.apple.com/uk/macos/monterey/)
-[![build running](https://camo.githubusercontent.com/5f0fabd6204876617cdc4ef33c48da33ac049e53a38eae71b239f8450776fe48/68747470733a2f2f706f77657263692e6f73756f736c2e6f72672f6a6f622f7079746f7263682d6d61737465722d6e696768746c792d7079332d6c696e75782d70706336346c652d6770752f62616467652f69636f6e)](https://camo.githubusercontent.com/5f0fabd6204876617cdc4ef33c48da33ac049e53a38eae71b239f8450776fe48/68747470733a2f2f706f77657263692e6f73756f736c2e6f72672f6a6f622f7079746f7263682d6d61737465722d6e696768746c792d7079332d6c696e75782d70706336346c652d6770752f62616467652f69636f6e)
+[![build running](https://img.shields.io/badge/build-passing-brightgreen)](#)
 
 ## Motivation 
 This project attempted to explore the communication efficiency and scalibility of the existing [DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator) simulator and possible improvements and futher optimisation 
