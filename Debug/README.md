@@ -42,7 +42,8 @@ setenv('LAPACK_VERSION', 'mkl.dll');
 (Alternatively add them to [runSimulator.m](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/runSimulator.m)).
 Then you can verify the two libraries have been loaded: 
 ```
-version -blas;version -lapack
+version -blas;
+version -lapack;
 ```
 ## Warning: Escaped character '\P' is not valid. See 'doc sprintf' for supported special characters.
 This is because the `SIMULATOR.sumoPath` variable in [*/DRIVE_Simulator/simSettings.m*](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/simSettings.m) is not set correctly
