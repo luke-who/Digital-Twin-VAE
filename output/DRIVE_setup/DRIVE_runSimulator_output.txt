@@ -1,0 +1,256 @@
+DRIVE: Digital Twin for self-dRiving Intelligent VEhicles
+Copyright (c) 2019-2020, Ioannis Mavromatis
+email: ioan.mavromatis@bristol.ac.uk
+email: ioannis.mavromatis@toshiba-bril.com
+
+Adding all modules and their subfolders to the path
+Adding module: tools                (ok)
+Adding module: animate              (ok)
+Adding module: basestationToobox    (ok)
+Adding module: externalToolbox      (ok)
+Adding module: loadFiles            (ok)
+Adding module: mapToolbox           (ok)
+Adding module: modeToolbox          (ok)
+Adding module: parsingToolbox       (ok)
+Adding module: polygonToolbox       (ok)
+Adding module: ratToolbox           (ok)
+Adding module: sumoToolbox          (ok)
+All modules were added successfully
+Parallel pool was initiated successfully
+TraCI was initiated correctly and was connected with SUMO.
+Loading all the RATs and calculating the link budget took 0.058192 seconds.
+Loading preprocessed map file: manhattanLarge
+Calculating the Squared Areas took: 0.403263 seconds
+Calculating the Squared Tiles took: 0.428021 seconds
+Finding all the LOS and NLOS links between all the pairs of tiles took: 41.482102 seconds.
+Finding the RSS values for all tiles and each potential femtocell BS position took 1.504475 seconds.
+Saving preprocessed potential V2V file: manhattanLarge_06-Jul-2022_v2v.mat
+The new potential positions for all RATs will be identified.
+Calculating the potential macrocell basestation positions took: 0.255580 seconds.
+Calculating the potential femtocell basestation positions took: 31.108066 seconds.
+Saving preprocessed potential BS positions file: manhattanLarge_06-Jul-2022_potentialPos.mat
+Identifying the potential positions for all RATs took: 56.822237 seconds.
+Finding the distance of each tile incentre from the potential macrocell BS positions took 0.049299 seconds.
+Finding the LOS tiles for each potential macrocell BS position took 28.293454 seconds.
+Finding the RSS values for all tiles and each potential macrocell BS position took 0.027574 seconds.
+Finding the distance of each tile incentre from the potential femtocell BS positions took 0.247960 seconds.
+Finding the LOS tiles for each potential femtocell BS position took 6.475587 seconds.
+Finding the RSS values for all tiles and each potential femtocell BS position took 0.252363 seconds.
+Saving preprocessed potential losNlosRAT file: manhattanLarge_06-Jul-2022_losNlosRAT.mat
+Maximum value will not achieved. The current result is returned.
+Finding the best RSUs using Greedy Addition took 0.146883 seconds.
+Saving preprocessed selected basestations to be deployed file: manhattanLarge_06-Jul-2022_bsPlacement.mat
+Generating a new user density took: 2.000095 seconds.
+The timestep is: 1.000000
+The timestep is: 2.000000
+The timestep is: 3.000000
+The timestep is: 4.000000
+The timestep is: 5.000000
+The timestep is: 6.000000
+The timestep is: 7.000000
+The timestep is: 8.000000
+The timestep is: 9.000000
+The timestep is: 10.000000
+The timestep is: 11.000000
+The timestep is: 12.000000
+The timestep is: 13.000000
+The timestep is: 14.000000
+The timestep is: 15.000000
+The timestep is: 16.000000
+The timestep is: 17.000000
+The timestep is: 18.000000
+The timestep is: 19.000000
+The timestep is: 20.000000
+The timestep is: 21.000000
+The timestep is: 22.000000
+The timestep is: 23.000000
+The timestep is: 24.000000
+The timestep is: 25.000000
+The timestep is: 26.000000
+The timestep is: 27.000000
+The timestep is: 28.000000
+The timestep is: 29.000000
+The timestep is: 30.000000
+The timestep is: 31.000000
+The timestep is: 32.000000
+The timestep is: 33.000000
+The timestep is: 34.000000
+The timestep is: 35.000000
+The timestep is: 36.000000
+The timestep is: 37.000000
+The timestep is: 38.000000
+The timestep is: 39.000000
+The timestep is: 40.000000
+The timestep is: 41.000000
+The timestep is: 42.000000
+The timestep is: 43.000000
+The timestep is: 44.000000
+The timestep is: 45.000000
+The timestep is: 46.000000
+The timestep is: 47.000000
+The timestep is: 48.000000
+The timestep is: 49.000000
+The timestep is: 50.000000
+Generating a new user density took: 0.715853 seconds.
+Finding the RSS values for all tiles and each potential macrocell basestation position took 0.071098 seconds.
+The timestep is: 51.000000
+The timestep is: 52.000000
+The timestep is: 53.000000
+The timestep is: 54.000000
+The timestep is: 55.000000
+The timestep is: 56.000000
+The timestep is: 57.000000
+The timestep is: 58.000000
+The timestep is: 59.000000
+The timestep is: 60.000000
+The timestep is: 61.000000
+The timestep is: 62.000000
+The timestep is: 63.000000
+The timestep is: 64.000000
+The timestep is: 65.000000
+The timestep is: 66.000000
+The timestep is: 67.000000
+The timestep is: 68.000000
+The timestep is: 69.000000
+The timestep is: 70.000000
+The timestep is: 71.000000
+The timestep is: 72.000000
+The timestep is: 73.000000
+The timestep is: 74.000000
+The timestep is: 75.000000
+The timestep is: 76.000000
+The timestep is: 77.000000
+The timestep is: 78.000000
+The timestep is: 79.000000
+The timestep is: 80.000000
+The timestep is: 81.000000
+The timestep is: 82.000000
+The timestep is: 83.000000
+The timestep is: 84.000000
+The timestep is: 85.000000
+The timestep is: 86.000000
+The timestep is: 87.000000
+The timestep is: 88.000000
+The timestep is: 89.000000
+The timestep is: 90.000000
+The timestep is: 91.000000
+The timestep is: 92.000000
+The timestep is: 93.000000
+The timestep is: 94.000000
+The timestep is: 95.000000
+The timestep is: 96.000000
+The timestep is: 97.000000
+The timestep is: 98.000000
+The timestep is: 99.000000
+The timestep is: 100.000000
+Generating a new user density took: 0.948099 seconds.
+Finding the RSS values for all tiles and each potential macrocell basestation position took 0.044752 seconds.
+The timestep is: 101.000000
+The timestep is: 102.000000
+The timestep is: 103.000000
+The timestep is: 104.000000
+The timestep is: 105.000000
+The timestep is: 106.000000
+The timestep is: 107.000000
+The timestep is: 108.000000
+The timestep is: 109.000000
+The timestep is: 110.000000
+The timestep is: 111.000000
+The timestep is: 112.000000
+The timestep is: 113.000000
+The timestep is: 114.000000
+The timestep is: 115.000000
+The timestep is: 116.000000
+The timestep is: 117.000000
+The timestep is: 118.000000
+The timestep is: 119.000000
+The timestep is: 120.000000
+The timestep is: 121.000000
+The timestep is: 122.000000
+The timestep is: 123.000000
+The timestep is: 124.000000
+The timestep is: 125.000000
+The timestep is: 126.000000
+The timestep is: 127.000000
+The timestep is: 128.000000
+The timestep is: 129.000000
+The timestep is: 130.000000
+The timestep is: 131.000000
+The timestep is: 132.000000
+The timestep is: 133.000000
+The timestep is: 134.000000
+The timestep is: 135.000000
+The timestep is: 136.000000
+The timestep is: 137.000000
+The timestep is: 138.000000
+The timestep is: 139.000000
+The timestep is: 140.000000
+The timestep is: 141.000000
+The timestep is: 142.000000
+The timestep is: 143.000000
+The timestep is: 144.000000
+The timestep is: 145.000000
+The timestep is: 146.000000
+The timestep is: 147.000000
+The timestep is: 148.000000
+The timestep is: 149.000000
+The timestep is: 150.000000
+Generating a new user density took: 0.569016 seconds.
+Finding the RSS values for all tiles and each potential macrocell basestation position took 0.023283 seconds.
+The timestep is: 151.000000
+The timestep is: 152.000000
+The timestep is: 153.000000
+The timestep is: 154.000000
+The timestep is: 155.000000
+The timestep is: 156.000000
+The timestep is: 157.000000
+The timestep is: 158.000000
+The timestep is: 159.000000
+The timestep is: 160.000000
+The timestep is: 161.000000
+The timestep is: 162.000000
+The timestep is: 163.000000
+The timestep is: 164.000000
+The timestep is: 165.000000
+The timestep is: 166.000000
+The timestep is: 167.000000
+The timestep is: 168.000000
+The timestep is: 169.000000
+The timestep is: 170.000000
+The timestep is: 171.000000
+The timestep is: 172.000000
+The timestep is: 173.000000
+The timestep is: 174.000000
+The timestep is: 175.000000
+The timestep is: 176.000000
+The timestep is: 177.000000
+The timestep is: 178.000000
+The timestep is: 179.000000
+The timestep is: 180.000000
+The timestep is: 181.000000
+The timestep is: 182.000000
+The timestep is: 183.000000
+The timestep is: 184.000000
+The timestep is: 185.000000
+The timestep is: 186.000000
+The timestep is: 187.000000
+The timestep is: 188.000000
+The timestep is: 189.000000
+The timestep is: 190.000000
+The timestep is: 191.000000
+The timestep is: 192.000000
+The timestep is: 193.000000
+The timestep is: 194.000000
+The timestep is: 195.000000
+The timestep is: 196.000000
+The timestep is: 197.000000
+The timestep is: 198.000000
+The timestep is: 199.000000
+The timestep is: 200.000000
+Generating a new user density took: 0.693358 seconds.
+Finding the RSS values for all tiles and each potential macrocell basestation position took 0.018290 seconds.
+The average datarate for the no. 1 communication plane is: 95.738056 Mbits/s
+The average datarate for the no. 2 communication plane is: 5755.959662 Mbits/s
+The entire SUMO mode took: 0.049886 seconds.
+Parsing the mobility required in total 0.078459 seconds.
+>> 
