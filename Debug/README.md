@@ -34,15 +34,12 @@ pathtool
 # Potential issues when running [DRIVE_Simulator](https://github.com/ioannismavromatis/DRIVE_Simulator)
 ## [LAPACK/BLAS loading error](https://uk.mathworks.com/matlabcentral/answers/269035-hot-to-fix-lapack-blas-loading-error)
 ### Solution:
-Enter two lines of code in the MATLAB Command Window, the 1st: 
+Enter two lines of code in the MATLAB Command Window: 
 ```
-setenv('BLAS_VERSION', 'mkl.dll')
+setenv('BLAS_VERSION', 'mkl.dll');
+setenv('LAPACK_VERSION', 'mkl.dll');
 ```
-and the 2nd: 
-```
-setenv('LAPACK_VERSION', 'mkl.dll')
-```
-
+(Alternatively add them to [runSimulator.m](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/runSimulator.m))
 Then you can verify the two libraries have been loaded: 
 ```
 version -blas;version -lapack
