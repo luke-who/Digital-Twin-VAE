@@ -69,7 +69,7 @@ Any installation debugging can be found in [Debug/README.md](Debug/README.md)
 -----------------------------------------------------------------------------------
 <!-- TODO: Describe and show how to run your code and run the tests.  -->
 ## runSimulator.m setup output
-If the setup all goes well you should see output command windows & figure(which contains the simulation of ambulance, passenger&pedestrian over 200 timesteps). In addition to the main output, you should also see a preprocessed .mat files output in a new folder (/DRIVE_Simulator/mobilityFiles/preprocessedFiles/sumo). 
+If the setup all goes well you should see output from [Command Window](output/DRIVE_setup/DRIVE_runSimulator_output.txt),[Command Prompt](output/DRIVE_setup/Traci_server_port_output_cmd.exe.txt) & [figure](output/DRIVE_setup/fig)(which contains the simulation of ambulance, passenger&pedestrian over 200 timesteps). In addition to the main output, you should also see preprocessed *.mat* files output in a new folder (/DRIVE_Simulator/mobilityFiles/preprocessedFiles/sumo). 
 
 # Running the nn
 
