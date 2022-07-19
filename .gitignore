@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Matlab stuff
+*.*~
+*.asv
+*.mat
+*.mexmaci64
+*.mexw64
+
+# src/DRIVE_Simulator/results
+.DS_Store
+# src/DRIVE_Simulator/mobilityFiles
