@@ -128,13 +128,20 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Matlab stuff
+# DRIVE stuff
 *.*~
 *.asv
 *.mat
 *.mexmaci64
 *.mexw64
-
 # src/DRIVE_Simulator/results
 .DS_Store
 # src/DRIVE_Simulator/mobilityFiles
+
+# traci4matlab stuff
+src/traci4matlab/net_patched.net.xml
+src/traci4matlab/inter_palmas_notls.net.xml
+src/traci4matlab/notls/
+src/traci4matlab/tls/
+src/traci4matlab/analisis.m
+src/traci4matlab/Thumbs.db
