@@ -25,6 +25,18 @@ The aim is to build a scalable, lightweight digital twin solution for the existi
 # Getting Started
 -----------------------------------------------------------------------------------
 <!-- TODO: Guide users through getting your code up and running on their own system. In this section you can talk about: -->
+Output a list of available conda env
+```
+conda env list
+```
+Active the conda environment
+```
+conda activate py38_torch
+```
+Alternatively install all the necessssary packages from `src/requirements.txt` (which is achieved by `pip freeze >> requirements.txt`
+```
+pip install -r /src/requirements.txt
+```
 
 ## 1.    Installation process
 ### Install Pytorch
