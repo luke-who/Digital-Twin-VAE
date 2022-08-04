@@ -52,7 +52,7 @@ See instructions [here](https://github.com/pipeacosta/traci4matlab/blob/master/u
 * [Statistics and Machine Learning Toolbox](https://uk.mathworks.com/help/stats/) Analyze and model data using statistics and machine learning
 * [MATLAB Support for MinGW-w64 C/C++ Compiler](https://uk.mathworks.com/matlabcentral/fileexchange/52848-matlab-support-for-mingw-w64-c-c-compiler) Install the MinGW-w64 C/C++ compiler for Windows (If the OS running is Windows)
     
-### pypi packages
+### pip packages
 Output a list of available conda env
 ```
 conda env list
