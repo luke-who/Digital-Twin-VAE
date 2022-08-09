@@ -145,3 +145,10 @@ src/traci4matlab/notls/
 src/traci4matlab/tls/
 src/traci4matlab/analisis.m
 src/traci4matlab/Thumbs.db
+
+# very big data files
+src/data
+src/DRIVE/Drive_output
+src/VAE/SavedModel
+src/VAE/TrainingImage
+
