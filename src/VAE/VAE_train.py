@@ -10,6 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import os
 from nn_utilities import reset_weights
+import pickle
 
 from tqdm import tqdm
 import torch.optim as optim
@@ -32,7 +33,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 isUsingEncode = False
 TrainingMachine = 'serve'
-LoadExistingModel = True
+LoadExistingModel = False
 UsingWandb = False
 isSavingModel = True
 isUsingValidation = True
@@ -71,16 +72,17 @@ else:
 # decoder.to(device)
 
 train_transforms = transforms.Compose([
-                                       # transforms.Grayscale(),
-                                       # transforms.RandomRotation(20),
-                                       # transforms.RandomResizedCrop(size=256, scale=(0.08, 1.0), ratio=(0.75, 1.3333333333333333)),
+                                    #    transforms.Grayscale(),
+                                    #    transforms.RandomRotation(45),
+                                    #    transforms.RandomResizedCrop(size=256, scale=(0.08, 1.0), ratio=(0.75, 1.3333333333333333)),
                                        transforms.Resize([256, 256]),
-                                       # transforms.RandomVerticalFlip(),
+                                    #    transforms.RandomVerticalFlip(p=1),
                                        # transforms.RandomHorizontalFlip(),
                                        transforms.ToTensor(),
                                        # transforms.Normalize(0.5, 0.5)])
                                        transforms.Normalize(mean=[0.5, 0.5, 0.5],
-                                                            std=[0.5, 0.5, 0.5])])
+                                                            std=[0.5, 0.5, 0.5])
+                                        ])
 
 # train_data = datasets.ImageFolder(data_dir + '/Train_SecAandB', transform=train_transforms)
 # train_data = datasets.ImageFolder(data_dir + '/Train_smallsize_testonly', transform=train_transforms)
@@ -190,8 +192,8 @@ def encoder_test():
 
 def plot_ae_outputs(outputs, imagesavename):
     k = 0
-    num_subf = 5
-    plt.figure(figsize=(30, 20))
+    num_subf = 1
+    plt.figure(figsize=(10, 20))
     # plt.gray()
     imgs = outputs[k][0].cpu().detach().numpy()
     recon = outputs[k][1].cpu().detach().numpy()
@@ -214,6 +216,7 @@ def plot_ae_outputs(outputs, imagesavename):
     if TrainingMachine == 'local':
         plt.show()
     else:
+        plt.tight_layout()
         plt.savefig(imagesavename)
         plt.close()
 
@@ -224,6 +227,7 @@ def plot_ae_outputs(outputs, imagesavename):
 #         data = data.to(device)
 #         decoder.encode(data)
 
+loss_list = []
 print(f'************Start training*************')
 for epoch in range(n_epochs):
     train_loss = 0.0
@@ -251,6 +255,7 @@ for epoch in range(n_epochs):
         # train_loss += loss.item() * data.size(0)
         # print(f'training on batch {k1}')
         # k1 += 1
+        loss_list.append(loss.item())
 
     print(f'Epoch:{epoch}, Loss:{loss.item():.4f}')
     if UsingWandb:
@@ -259,9 +264,9 @@ for epoch in range(n_epochs):
     if isUsingValidation:
         outputs = encoder_test()
 
-        name_encode = f'./SavedModel/encode/DT_2D_deep_dp_adam_workable_{epoch+19}_color_{loss.item():.4f}.pt'
-        name_decode = f'./SavedModel/decode/DT_2D_deep_dp_adam_workable_{epoch+19}_color_{loss.item():.4f}.pt'
-        imagesavename = f'./TrainingImage/Epoch_2D_deep_dp_adam_workable_{epoch+19}_{loss.item():.4f}.jpg'
+        name_encode = f'./SavedModel/encode/DT_2D_deep_dp_adam_workable_{epoch}_color_{loss.item():.4f}.pt'
+        name_decode = f'./SavedModel/decode/DT_2D_deep_dp_adam_workable_{epoch}_color_{loss.item():.4f}.pt'
+        imagesavename = f'./TrainingImage/Epoch_2D_deep_dp_adam_workable_{epoch}_{loss.item():.4f}.svg'
         if TrainingMachine == 'local':
             torch.save(encoder.state_dict(), name_encode)
             torch.save(decoder.state_dict(), name_decode)
@@ -274,7 +279,16 @@ for epoch in range(n_epochs):
             # torch.save(decoder.module.state_dict(), name_decode)
         plot_ae_outputs(outputs, imagesavename)
 
+with open('training_output/loss_list_normalize.pkl', 'wb') as f:
+    pickle.dump(loss_list, f)       
+f.close()
 
-
+def loadData():
+    # for reading also binary mode is important
+    with open('training_output/loss_list_normalize.pkl', 'rb') as f:
+        list_load = pickle.load(f)
+    for v in list_load:
+        print(v)
+    f.close()
 
 
