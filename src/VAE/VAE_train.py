@@ -76,12 +76,12 @@ train_transforms = transforms.Compose([
                                     #    transforms.RandomRotation(45),
                                     #    transforms.RandomResizedCrop(size=256, scale=(0.08, 1.0), ratio=(0.75, 1.3333333333333333)),
                                        transforms.Resize([256, 256]),
-                                    #    transforms.RandomVerticalFlip(p=1),
+                                       transforms.RandomVerticalFlip(),
                                        # transforms.RandomHorizontalFlip(),
                                        transforms.ToTensor(),
                                        # transforms.Normalize(0.5, 0.5)])
-                                       transforms.Normalize(mean=[0.5, 0.5, 0.5],
-                                                            std=[0.5, 0.5, 0.5])
+                                    #    transforms.Normalize(mean=[0.5, 0.5, 0.5],
+                                    #                         std=[0.5, 0.5, 0.5])
                                         ])
 
 # train_data = datasets.ImageFolder(data_dir + '/Train_SecAandB', transform=train_transforms)
@@ -279,16 +279,13 @@ for epoch in range(n_epochs):
             # torch.save(decoder.module.state_dict(), name_decode)
         plot_ae_outputs(outputs, imagesavename)
 
-with open('training_output/loss_list_normalize.pkl', 'wb') as f:
-    pickle.dump(loss_list, f)       
+# with open('training_output/loss_list_normalize.pkl', 'wb') as f:
+#     pickle.dump(loss_list, f)       
+# with open('training_output/loss_list_rotation.pkl', 'wb') as f:
+#     pickle.dump(loss_list, f)       
+with open('training_output/loss_list_vertical_flip.pkl', 'wb') as f:
+    pickle.dump(loss_list, f)    
 f.close()
 
-def loadData():
-    # for reading also binary mode is important
-    with open('training_output/loss_list_normalize.pkl', 'rb') as f:
-        list_load = pickle.load(f)
-    for v in list_load:
-        print(v)
-    f.close()
 
 
