@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from nn_utilities import data_load_processing
 from matplotlib import pyplot as plt
 plt.rcParams["figure.figsize"] = [12.00, 9.0]
 plt.rcParams["figure.autolayout"] = True
@@ -35,18 +36,48 @@ f_xmax = xlim[1]-1371
 
 # filter data points to a certain frame
 filtered_A_aug_xmin, filtered_A_aug_ymin = [], []
-for i in list(range(len(data_A_aug.xmin))):
-    # if (data_A_aug.xmin[i]>xlim[0] and data_A_aug.xmin[i]<xlim[1]) and (data_A_aug.ymin[i]>ylim[0] and data_A_aug.ymin[i]<ylim[1]): # confine to a certain frame
-    if (data_A_aug.xmin[i]>f_xmin and data_A_aug.xmin[i]<f_xmax) and (data_A_aug.ymin[i]>f_ymin and data_A_aug.ymin[i]<f_ymax): # remove certain outliers
-        filtered_A_aug_xmin.append(data_A_aug.xmin[i]), filtered_A_aug_ymin.append(data_A_aug.ymin[i])
 filtered_B_aug_xmin, filtered_B_aug_ymin = [], []
-for i in list(range(len(data_B_aug.xmin))):
-    if (data_B_aug.xmin[i]>f_xmin and data_B_aug.xmin[i]<f_xmax) and (data_B_aug.ymin[i]>f_ymin and data_B_aug.ymin[i]<f_ymax):
-        filtered_B_aug_xmin.append(data_B_aug.xmin[i]), filtered_B_aug_ymin.append(data_B_aug.ymin[i])
 filtered_C_aug_xmin, filtered_C_aug_ymin = [], []
-for i in list(range(len(data_C_aug.xmin))):
-    if (data_C_aug.xmin[i]>f_xmin and data_C_aug.xmin[i]<f_xmax) and (data_C_aug.ymin[i]>f_ymin and data_C_aug.ymin[i]<f_ymax):
-        filtered_C_aug_xmin.append(data_C_aug.xmin[i]), filtered_C_aug_ymin.append(data_C_aug.ymin[i])
+
+# for i in list(range(len(data_A_aug.xmin))):
+#     # if (data_A_aug.xmin[i]>xlim[0] and data_A_aug.xmin[i]<xlim[1]) and (data_A_aug.ymin[i]>ylim[0] and data_A_aug.ymin[i]<ylim[1]): # confine to a certain frame
+#     if (data_A_aug.xmin[i]>f_xmin and data_A_aug.xmin[i]<f_xmax) and (data_A_aug.ymin[i]>f_ymin and data_A_aug.ymin[i]<f_ymax): # remove certain outliers
+#         filtered_A_aug_xmin.append(data_A_aug.xmin[i]), filtered_A_aug_ymin.append(data_A_aug.ymin[i])
+# for i in list(range(len(data_B_aug.xmin))):
+#     if (data_B_aug.xmin[i]>f_xmin and data_B_aug.xmin[i]<f_xmax) and (data_B_aug.ymin[i]>f_ymin and data_B_aug.ymin[i]<f_ymax):
+#         filtered_B_aug_xmin.append(data_B_aug.xmin[i]), filtered_B_aug_ymin.append(data_B_aug.ymin[i])
+# for i in list(range(len(data_C_aug.xmin))):
+#     if (data_C_aug.xmin[i]>f_xmin and data_C_aug.xmin[i]<f_xmax) and (data_C_aug.ymin[i]>f_ymin and data_C_aug.ymin[i]<f_ymax):
+#         filtered_C_aug_xmin.append(data_C_aug.xmin[i]), filtered_C_aug_ymin.append(data_C_aug.ymin[i])
+
+# Hampel function to remove outlier
+def remove_outlier_Hampel(x,y):
+    deviation_factor = 12
+    x = [float(xx) for xx in x]
+    y = [float(yx) for yx in y]
+
+    med_x=np.median(x)
+    List_x=abs(x-med_x)
+    cond_x=np.median(List_x)*deviation_factor
+
+    good_index_x = [i for i,l in enumerate(List_x) if ~(l>cond_x)]
+
+    mid_x = [x[i] for i in good_index_x]
+    mid_y = [y[i] for i in good_index_x]
+
+    med_y=np.median(mid_y)
+    List_y=abs(mid_y-med_y)
+    cond_y=np.median(List_y)*deviation_factor
+
+    good_index_y = [i for i,l in enumerate(List_y) if ~(l>cond_y)]
+    x_without_outliers = [mid_x[i] for i in good_index_y]
+    y_without_outliers = [mid_y[i] for i in good_index_y]
+
+    return x_without_outliers, y_without_outliers
+
+filtered_A_aug_xmin, filtered_A_aug_ymin = remove_outlier_Hampel(data_A_aug.xmin,data_A_aug.ymin)
+filtered_B_aug_xmin, filtered_B_aug_ymin = remove_outlier_Hampel(data_B_aug.xmin,data_B_aug.ymin)
+filtered_C_aug_xmin, filtered_C_aug_ymin = remove_outlier_Hampel(data_C_aug.xmin,data_C_aug.ymin)
 
 # # scatter scale to bristol pic
 filtered_A_aug_xmin_scaled = [int(((f_A_aug_x-xlim[0])/xrange)*x_brisRange) for f_A_aug_x in filtered_A_aug_xmin]
@@ -67,7 +98,7 @@ plt.ylim(y_bristol[0],y_bristol[1])
 ax.set_yticklabels([])
 ax.set_xticklabels([])
 ax.legend()
-# plt.show()
+# plt.show() # comment this line if you want to save the figure as a svg file
 
 plt.tight_layout()
 plt.savefig("bristol_UE_scatter.svg")
