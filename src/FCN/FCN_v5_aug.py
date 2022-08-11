@@ -6,10 +6,10 @@ import numpy as np
 import os
 import scipy.io as scio
 from sklearn.model_selection import KFold
-from Serve_DP import plot_results
+# from Serve_DP import plot_results
 # wandb.init(project="DT_ML")
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2'
 
 # import folders
 folder = './Data/bris_mdt_map_10231C11_10m.csv'

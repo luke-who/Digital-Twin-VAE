@@ -6,19 +6,23 @@ import numpy as np
 import os
 import scipy.io as scio
 from sklearn.model_selection import KFold
-from Serve_DP import plot_results
+# from Serve_DP import plot_results
 # wandb.init(project="DT_ML")
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2'
 
 # import folders
-folder = './Data/bris_mdt_map_10231C11_10m.csv'
-folder_Jan_A = './Data/MDT data_jan/mdt_10231A11_10m_Jan.csv'
-folder_Jan_B = './Data/MDT data_jan/mdt_10231B11_10m_Jan.csv'
-folder_Jan_C = './Data/MDT data_jan/mdt_10231C11_10m_Jan.csv'
-folder_Aug_A = './Data/MDT data_aug/mdt_10231A11_10m_aug.csv'
-folder_Aug_B = './Data/MDT data_aug/mdt_10231B11_10m_aug.csv'
-folder_Aug_C = './Data/MDT data_aug/mdt_10231C11_10m_aug.csv'
+# folder = '../data/bris_mdt_map_10231C11_10m.csv'
+# folder_Jan_A = '../data/MDT data_jan/mdt_10231A11_10m_jan.csv'
+# folder_Jan_B = '../data/MDT data_jan/mdt_10231B11_10m_jan.csv'
+# folder_Jan_C = '../data/MDT data_jan/mdt_10231C11_10m_jan.csv'
+# folder_Aug_A = '../data/MDT data_aug/mdt_10231A11_10m_aug.csv'
+# folder_Aug_B = '../data/MDT data_aug/mdt_10231B11_10m_aug.csv'
+# folder_Aug_C = '../data/MDT data_aug/mdt_10231C11_10m_aug.csv'
+
+month = "jan"
+sector = "C"
 
 if __name__ == "__main__":
     k_folds = 20
@@ -37,12 +41,22 @@ if __name__ == "__main__":
     dim2MAError_P_all = np.zeros((1, k_folds))
     dim3MAError_P_all = np.zeros((1, k_folds))
 
+    if month == "jan":
+        if sector == "A":
+            xynodes_all = [scio.loadmat('../VAE/matlab_data/xy_without_outliers/jan/tmp1A.mat')['tmp1']]
+        else:
+            xynodes_all = [scio.loadmat(f'../VAE/matlab_data/xy_without_outliers/jan/tmp1{sector}.mat')[f'tmp1{sector}']]
+        encode_all = [np.load(f"../VAE/encoded_output_z/jan/encode_output_sector_{sector}_1403_zeta.npy")]
+    elif month == "aug":
+        if sector == "A":
+            xynodes_all = [scio.loadmat(f'../VAE/matlab_data/xy_without_outliers/{month}/tmp1A_{month}.mat')['tmp1']]
+        else:
+            xynodes_all = [scio.loadmat(f'../VAE/matlab_data/xy_without_outliers/{month}/tmp1{sector}_{month}.mat')[f'tmp1{sector}']]
+        encode_all = [np.load(f"../VAE/encoded_output_z/{month}/encode_output_sector_{sector}_0704_{month}_zeta.npy")]
 
-    xynodes_all = [scio.loadmat('tmp1B.mat')['tmp1B']]
-    # xynodes_all = [scio.loadmat('tmp1B.mat')['tmp1B']]
-    encode_all = [np.load("encode_output_sector_B_1403_zeta.npy")]
+    folder_month_sector = f'../data/MDT data_{month}/mdt_10231{sector}11_10m_{month}.csv'
 
-    Data = encoded_data_processing(folder_Jan_B, False, xynodes_all[0], encode_all[0])
+    Data = encoded_data_processing(folder_month_sector, False, xynodes_all[0], encode_all[0])
     _, _, train_dataset, test_dataset = Data.Data_preprocessing()
 
     kfold = KFold(n_splits=k_folds, shuffle=True)
@@ -80,15 +94,13 @@ if __name__ == "__main__":
         data_needed.append((trainloss, testloss, MAError, MAError_P, trainloss_var, testloss_var, MAError_var, MAError_P_var))
 
 
-    np.save("./dim3Loss_all_10flod_C_v2_1403_vae2_4f.npy", dim3Loss_all)
-    np.save("./dim2Loss_all_10flod_C_v2_1403_vae2_4f.npy", dim2Loss_all)
-    np.save("./data_needed_10flod_C_v2_1403_vae2_4f.npy", data_needed)
-    np.save("./MAError_10flod_C_v2_1403_vae2_4f.npy", dim3MAError_all)
-    np.save("./MAError_var_10flod_C_v2_1403_vae2_4f.npy", dim2MAError_all)
-    np.save("./MAError_P_10flod_C_v2_1403_vae2_4f.npy", dim3MAError_P_all)
-    np.save("./MAError_P_var_10flod_C_v2_1403_vae2_4f.npy", dim2MAError_P_all)
+    np.save(f"train_test_output/npy/{month}/{sector}/dim3Loss_all_10flod_{sector}_v2_1403_{month}_vae2_4f.npy", dim3Loss_all)
+    np.save(f"train_test_output/npy/{month}/{sector}/dim2Loss_all_10flod_{sector}_v2_1403_{month}_vae2_4f.npy", dim2Loss_all)
+    np.save(f"train_test_output/npy/{month}/{sector}/data_needed_10flod_{sector}_v2_1403_{month}_vae2_4f.npy", data_needed)
+    np.save(f"train_test_output/npy/{month}/{sector}/MAError_10flod_{sector}_v2_1403_{month}_vae2_4f.npy", dim3MAError_all)
+    np.save(f"train_test_output/npy/{month}/{sector}/MAError_var_10flod_{sector}_v2_1403_{month}_vae2_4f.npy", dim2MAError_all)
+    np.save(f"train_test_output/npy/{month}/{sector}/MAError_P_10flod_{sector}_v2_1403_{month}_vae2_4f.npy", dim3MAError_P_all)
+    np.save(f"train_test_output/npy/{month}/{sector}/MAError_P_var_10flod_{sector}_v2_1403_{month}_vae2_4f.npy", dim2MAError_P_all)
 
     # note: dim3Loss_all_10flod_A_v2_1403_vae2.npy shows improvement around 5%
     # plot_results(dim3MAError_all.T, dim2MAError_all.T, dim3MAError_P_all.T, dim2MAError_P_all.T, dim3Loss_all.T, dim2Loss_all.T, data_needed)
-
-    #
