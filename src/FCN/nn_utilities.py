@@ -536,7 +536,7 @@ class Linear_Model(nn.Module):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.criterion = nn.GaussianNLLLoss(reduction='mean')
         self.create_model()
-        self.isTerminal = True
+        self.isTerminal = False
         self.isAdaptiveLR = False
         self.val_in_every_train_epoc = True
         self.isCalculatingKLinTest = False

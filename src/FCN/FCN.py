@@ -22,7 +22,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2'
 # folder_Aug_C = '../data/MDT data_aug/mdt_10231C11_10m_aug.csv'
 
 month = "aug"
-sector = "A"
+sector = "C"
 
 if __name__ == "__main__":
     k_folds = 20
