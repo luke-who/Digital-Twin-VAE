@@ -236,6 +236,7 @@ def box_plot(Loss3D, Loss2D):
     # plt.ylabel('MAE')
 
     # plt.show()
+    # plt.tight_layout()
     plt.savefig("plot_result/MAE_boxplot.svg")
     # fig.savefig('boxplot_aug.eps', bbox_inches = 'tight', dpi=600, format='eps', pad_inches=0.0)
 
