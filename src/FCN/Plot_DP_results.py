@@ -12,9 +12,9 @@ import matplotlib.pyplot as plt
 def plot_results(dim3MAE, dim2MAE, dim3MAE_P, dim2MAE_P, dim3Loss, dim2Loss, ProcessData, isplotting, month, sector):
 
     imp = (dim2MAE.mean()-dim3MAE.mean())/(dim2MAE.mean())
-    imp_in_P = (dim2MAE_P.mean()-dim3MAE_P.mean())/(dim3MAE_P.mean())
+    imp_in_P = (dim2MAE_P.mean()-dim3MAE_P.mean())/(dim2MAE_P.mean())
 
-    imp2 = (dim2Loss.mean()-dim3Loss.mean())/(dim3Loss.mean())
+    imp2 = (dim2Loss.mean()-dim3Loss.mean())/(dim2Loss.mean())
 
     MAE_Loss3D = np.zeros((len(ProcessData), 2))
     MAE_Loss2D = np.zeros((len(ProcessData), 2))
@@ -73,10 +73,14 @@ def bar_plot(MAE_Mean3D, MAE_Mean2D, sector):
     barWidth = 0.25
 
     # set heights of bars
-    MAE_Mean3D_Jan = [MAE_Mean3D['Jan']['A'], MAE_Mean3D['Jan']['B'], MAE_Mean3D['Jan']['C']]
-    MAE_Mean2D_Jan = [MAE_Mean2D['Jan']['A'], MAE_Mean2D['Jan']['B'], MAE_Mean2D['Jan']['C']]
-    MAE_Mean3D_Aug = [MAE_Mean3D['Aug']['A'], MAE_Mean3D['Aug']['B'], MAE_Mean3D['Aug']['C']]
-    MAE_Mean2D_Aug = [MAE_Mean2D['Aug']['A'], MAE_Mean2D['Aug']['B'], MAE_Mean2D['Aug']['C']]
+    MAE_Mean3D_Jan = [MAE_Mean3D['Jan']['A'],
+                      MAE_Mean3D['Jan']['B'], MAE_Mean3D['Jan']['C']]
+    MAE_Mean2D_Jan = [MAE_Mean2D['Jan']['A'],
+                      MAE_Mean2D['Jan']['B'], MAE_Mean2D['Jan']['C']]
+    MAE_Mean3D_Aug = [MAE_Mean3D['Aug']['A'],
+                      MAE_Mean3D['Aug']['B'], MAE_Mean3D['Aug']['C']]
+    MAE_Mean2D_Aug = [MAE_Mean2D['Aug']['A'],
+                      MAE_Mean2D['Aug']['B'], MAE_Mean2D['Aug']['C']]
 
     # Set position of bar on X axis
     x1 = np.arange(len(MAE_Mean3D_Jan))
@@ -89,29 +93,30 @@ def bar_plot(MAE_Mean3D, MAE_Mean2D, sector):
             edgecolor='white', label='MLP')
     # Add xticks on the middle of the group bars
     plt.xlabel('Jan', fontweight='bold')
-    plt.xticks([m + (barWidth/2) for m in range(len(MAE_Mean3D_Jan))], ['A', 'B', 'C'])
+    plt.xticks([m + (barWidth/2)
+               for m in range(len(MAE_Mean3D_Jan))], ['A', 'B', 'C'])
     plt.ylabel('Mean MAE (dBm)')
     # Create legend & Show graphic
     plt.legend()
     # plt.show()
-    plt.savefig(f"plot_result/MAE_bar/MAE_Jan.svg")
+    plt.savefig(f"plot_result/MAE_bar/Mean_MAE_Jan.svg")
     plt.close()
 
     ###### Make the plot for all Sectors in Aug ######
-    plt.bar(x1, MAE_Mean3D_Aug, color='purple', width=barWidth,  #3C88C0
+    plt.bar(x1, MAE_Mean3D_Aug, color='purple', width=barWidth,  # 3C88C0
             edgecolor='white', label='2-stage NN')
-    plt.bar(x2, MAE_Mean2D_Aug, color='orange', width=barWidth,  #6BDD7F
+    plt.bar(x2, MAE_Mean2D_Aug, color='orange', width=barWidth,  # 6BDD7F
             edgecolor='white', label='MLP')
     # Add xticks on the middle of the group bars
     plt.xlabel('Aug', fontweight='bold')
-    plt.xticks([m + (barWidth/2) for m in range(len(MAE_Mean3D_Aug))], ['A', 'B', 'C'])
+    plt.xticks([m + (barWidth/2)
+               for m in range(len(MAE_Mean3D_Aug))], ['A', 'B', 'C'])
     plt.ylabel('Mean MAE (dBm)')
     # Create legend & Show graphic
     plt.legend()
     # plt.show()
-    plt.savefig(f"plot_result/MAE_bar/MAE_Aug.svg")
+    plt.savefig(f"plot_result/MAE_bar/Mean_MAE_Aug.svg")
     plt.close()
-    
 
     #-------------- ALternatively use panda --------------#
     plt.figure(figsize=(10, 8))
@@ -127,10 +132,10 @@ def bar_plot(MAE_Mean3D, MAE_Mean2D, sector):
         # Using Matplotlib's annotate function and
         # passing the coordinates where the annotation shall be done
         plot.annotate(format(bar.get_height(), '.2f'),
-                    (bar.get_x() + bar.get_width() / 2,
-                        bar.get_height()), ha='center', va='center',
-                    size=15, xytext=(0, 5),
-                    textcoords='offset points')
+                      (bar.get_x() + bar.get_width() / 2,
+                       bar.get_height()), ha='center', va='center',
+                      size=15, xytext=(0, 5),
+                      textcoords='offset points')
     # plt.show()
     plt.savefig(f"plot_result/MAE_bar/Mean_MAE_Jan_panda.svg")
     plt.close()
@@ -155,6 +160,7 @@ def bar_plot(MAE_Mean3D, MAE_Mean2D, sector):
     # plt.show()
     plt.savefig(f"plot_result/MAE_bar/Mean_MAE_Aug_panda.svg")
     plt.close()
+
 
 def box_plot(Loss3D, Loss2D):
     fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(10, 9))
@@ -227,7 +233,7 @@ def box_plot(Loss3D, Loss2D):
     # ax.set_ylabel('ylabel')  # 设置y轴名称
 
     # fig.suptitle('Comparsion of MAE on test set (20-fold Cross validation) over different sectors and months', fontsize = y_font_size)  # title and font size
-    plt.ylabel('MAE')
+    # plt.ylabel('MAE')
 
     # plt.show()
     plt.savefig("plot_result/MAE_boxplot.svg")
@@ -248,109 +254,109 @@ if __name__ == "__main__":
     isplotting = True
 
     dim3MAE_A = np.load(
-        "train_test_output/old_npy/jan/A/MAError_10flod_A_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/A/MAError_10flod_A_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2MAE_A = np.load(
-        "train_test_output/old_npy/jan/A/MAError_var_10flod_A_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/A/MAError_var_10flod_A_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim3MAE_P_A = np.load(
-        "train_test_output/old_npy/jan/A/MAError_P_10flod_A_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/A/MAError_P_10flod_A_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2MAE_P_A = np.load(
-        "train_test_output/old_npy/jan/A/MAError_P_var_10flod_A_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/A/MAError_P_var_10flod_A_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim3Loss_A = np.load(
-        "train_test_output/old_npy/jan/A/dim3Loss_all_10flod_A_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/A/dim3Loss_all_10flod_A_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2Loss_A = np.load(
-        "train_test_output/old_npy/jan/A/dim2Loss_all_10flod_A_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/A/dim2Loss_all_10flod_A_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     ProcessData_A = np.load(
-        "train_test_output/old_npy/jan/A/data_needed_10flod_A_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/A/data_needed_10flod_A_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
 
     Loss3D['Jan']['A'], Loss2D['Jan']['A'], MAE_Mean3D['Jan']['A'], MAE_Mean2D['Jan']['A'] = plot_results(
         dim3MAE_A.T, dim2MAE_A.T, dim3MAE_P_A.T, dim2MAE_P_A.T, dim3Loss_A.T, dim2Loss_A.T, ProcessData_A, isplotting, month[0], sector[0])
 
     dim3MAE_B = np.load(
-        "train_test_output/old_npy/jan/B/MAError_10flod_B_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/B/MAError_10flod_B_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2MAE_B = np.load(
-        "train_test_output/old_npy/jan/B/MAError_var_10flod_B_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/B/MAError_var_10flod_B_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim3MAE_P_B = np.load(
-        "train_test_output/old_npy/jan/B/MAError_P_10flod_B_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/B/MAError_P_10flod_B_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2MAE_P_B = np.load(
-        "train_test_output/old_npy/jan/B/MAError_P_var_10flod_B_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/B/MAError_P_var_10flod_B_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim3Loss_B = np.load(
-        "train_test_output/old_npy/jan/B/dim3Loss_all_10flod_B_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/B/dim3Loss_all_10flod_B_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2Loss_B = np.load(
-        "train_test_output/old_npy/jan/B/dim2Loss_all_10flod_B_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/B/dim2Loss_all_10flod_B_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     ProcessData_B = np.load(
-        "train_test_output/old_npy/jan/B/data_needed_10flod_B_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/B/data_needed_10flod_B_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
 
     Loss3D['Jan']['B'], Loss2D['Jan']['B'], MAE_Mean3D['Jan']['B'], MAE_Mean2D['Jan']['B'] = plot_results(
         dim3MAE_B.T, dim2MAE_B.T, dim3MAE_P_B.T, dim2MAE_P_B.T, dim3Loss_B.T, dim2Loss_B.T, ProcessData_B, isplotting, month[0], sector[1])
 
     dim3MAE_C = np.load(
-        "train_test_output/old_npy/jan/C/MAError_10flod_C_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/C/MAError_10flod_C_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2MAE_C = np.load(
-        "train_test_output/old_npy/jan/C/MAError_var_10flod_C_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/C/MAError_var_10flod_C_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim3MAE_P_C = np.load(
-        "train_test_output/old_npy/jan/C/MAError_P_10flod_C_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/C/MAError_P_10flod_C_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2MAE_P_C = np.load(
-        "train_test_output/old_npy/jan/C/MAError_P_var_10flod_C_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/C/MAError_P_var_10flod_C_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim3Loss_C = np.load(
-        "train_test_output/old_npy/jan/C/dim3Loss_all_10flod_C_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/C/dim3Loss_all_10flod_C_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     dim2Loss_C = np.load(
-        "train_test_output/old_npy/jan/C/dim2Loss_all_10flod_C_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/C/dim2Loss_all_10flod_C_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
     ProcessData_C = np.load(
-        "train_test_output/old_npy/jan/C/data_needed_10flod_C_v2_1403_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/jan/C/data_needed_10flod_C_v2_1403_jan_vae2_4f.npy", allow_pickle=True)
 
     Loss3D['Jan']['C'], Loss2D['Jan']['C'], MAE_Mean3D['Jan']['C'], MAE_Mean2D['Jan']['C'] = plot_results(
         dim3MAE_C.T, dim2MAE_C.T, dim3MAE_P_C.T, dim2MAE_P_C.T, dim3Loss_C.T, dim2Loss_C.T, ProcessData_C, isplotting, month[0], sector[2])
 
     dim3MAE_A = np.load(
-        "train_test_output/old_npy/aug/A/MAError_10flod_A_v2_0704_aug_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/A/MAError_10flod_A_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2MAE_A = np.load(
-        "train_test_output/old_npy/aug/A/MAError_var_10flod_A_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/A/MAError_var_10flod_A_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim3MAE_P_A = np.load(
-        "train_test_output/old_npy/aug/A/MAError_P_10flod_A_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/A/MAError_P_10flod_A_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2MAE_P_A = np.load(
-        "train_test_output/old_npy/aug/A/MAError_P_var_10flod_A_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/A/MAError_P_var_10flod_A_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim3Loss_A = np.load(
-        "train_test_output/old_npy/aug/A/dim3Loss_all_10flod_A_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/A/dim3Loss_all_10flod_A_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2Loss_A = np.load(
-        "train_test_output/old_npy/aug/A/dim2Loss_all_10flod_A_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/A/dim2Loss_all_10flod_A_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     ProcessData_A = np.load(
-        "train_test_output/old_npy/aug/A/data_needed_10flod_A_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/A/data_needed_10flod_A_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
 
     Loss3D['Aug']['A'], Loss2D['Aug']['A'], MAE_Mean3D['Aug']['A'], MAE_Mean2D['Aug']['A'] = plot_results(
         dim3MAE_A.T, dim2MAE_A.T, dim3MAE_P_A.T, dim2MAE_P_A.T, dim3Loss_A.T, dim2Loss_A.T, ProcessData_A, isplotting, month[1], sector[0])
 
     dim3MAE_B = np.load(
-        "train_test_output/old_npy/aug/B/MAError_10flod_B_v2_1403_0704_aug_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/B/MAError_10flod_B_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2MAE_B = np.load(
-        "train_test_output/old_npy/aug/B/MAError_var_10flod_B_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/B/MAError_var_10flod_B_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim3MAE_P_B = np.load(
-        "train_test_output/old_npy/aug/B/MAError_P_10flod_B_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/B/MAError_P_10flod_B_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2MAE_P_B = np.load(
-        "train_test_output/old_npy/aug/B/MAError_P_var_10flod_B_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/B/MAError_P_var_10flod_B_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim3Loss_B = np.load(
-        "train_test_output/old_npy/aug/B/dim3Loss_all_10flod_B_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/B/dim3Loss_all_10flod_B_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2Loss_B = np.load(
-        "train_test_output/old_npy/aug/B/dim2Loss_all_10flod_B_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/B/dim2Loss_all_10flod_B_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     ProcessData_B = np.load(
-        "train_test_output/old_npy/aug/B/data_needed_10flod_B_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/B/data_needed_10flod_B_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
 
     Loss3D['Aug']['B'], Loss2D['Aug']['B'], MAE_Mean3D['Aug']['B'], MAE_Mean2D['Aug']['B'] = plot_results(
         dim3MAE_B.T, dim2MAE_B.T, dim3MAE_P_B.T, dim2MAE_P_B.T, dim3Loss_B.T, dim2Loss_B.T, ProcessData_B, isplotting, month[1], sector[1])
 
     dim3MAE_C = np.load(
-        "train_test_output/old_npy/aug/C/MAError_10flod_C_v2_1403_0704_aug_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/C/MAError_10flod_C_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2MAE_C = np.load(
-        "train_test_output/old_npy/aug/C/MAError_var_10flod_C_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/C/MAError_var_10flod_C_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim3MAE_P_C = np.load(
-        "train_test_output/old_npy/aug/C/MAError_P_10flod_C_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/C/MAError_P_10flod_C_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2MAE_P_C = np.load(
-        "train_test_output/old_npy/aug/C/MAError_P_var_10flod_C_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/C/MAError_P_var_10flod_C_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim3Loss_C = np.load(
-        "train_test_output/old_npy/aug/C/dim3Loss_all_10flod_C_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/C/dim3Loss_all_10flod_C_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     dim2Loss_C = np.load(
-        "train_test_output/old_npy/aug/C/dim2Loss_all_10flod_C_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/C/dim2Loss_all_10flod_C_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
     ProcessData_C = np.load(
-        "train_test_output/old_npy/aug/C/data_needed_10flod_C_v2_0704_aug_vae2_4f.npy", allow_pickle=True)
+        "train_test_output/npy/aug/C/data_needed_10flod_C_v2_1403_aug_vae2_4f.npy", allow_pickle=True)
 
     Loss3D['Aug']['C'], Loss2D['Aug']['C'], MAE_Mean3D['Aug']['C'], MAE_Mean2D['Aug']['C'] = plot_results(
         dim3MAE_C.T, dim2MAE_C.T, dim3MAE_P_C.T, dim2MAE_P_C.T, dim3Loss_C.T, dim2Loss_C.T, ProcessData_C, isplotting, month[1], sector[2])
