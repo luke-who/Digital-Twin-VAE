@@ -1,4 +1,4 @@
-# Digital Twins for future digital infrastructures
+# Digital Twin and Variational Autoencoder Integrated Neural Netowrk for RSRP Prediction
 -----------------------------------------------------------------------------------
 [![python](https://img.shields.io/badge/python-3.9.8-blue?style=plastic&logo=python)](https://www.python.org/downloads/release/python-398/)
 [![pip](https://img.shields.io/badge/pip-v21.2.4-informational?&logo=pypi)](https://pypi.org/project/pip/21.2.4/)
@@ -10,17 +10,17 @@
 [![build running](https://img.shields.io/badge/build-passing-brightgreen)](#)
 
 ## Motivation 
-This project attempted to explore the communication efficiency and scalibility of the existing [DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator) simulator and possible improvements and futher optimisation 
+Design and develop a scalable and lightweight signal strength prediction model with the help of a DT([DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator)) and VAE to improve prediction accuracy for the existing mobile networks.
 ## Aim
-The aim is to build a scalable, lightweight digital twin solution for the existing 5G network and future networks
+This project aims to explore the use of a 2-stage Neural Network (NN) which consists of a Variational Auto-Encoder(VAE) and another NN for Reference Signal Received Power (RSRP) prediction to improve QoS (Quality of Service).
 
 ## Objectives
-* Research the necessary library and development environment to conduct various FL simulations
-* Create suitable unbalanced dataset, to simulate real world FL system and evaluate corresponding methods
-* Build FL model with existing machine learning framework using basic model aggregation such as averaged weights update (*Fed_Avg*)
-* Investigate the effect of parameters: number of clients, rounds, epochs, learning rate, optimisation functions on the global model 
-* Benchmark the FL algorithm, use metrics such as learning accuracy and loss to evaluate model performance and convergence rate by deploying different communication reduction strategies
-* Choose the best method out of all proposed reduction strategies for optimising communication, calculate the amount of reduction achieved
+* Explore the use of an existing DT (self-dRiving Intelligent Vehicles (DRIVE)) and modify it to generate synthetic data which combines both real-world data and spatial data from Open Stree Map (OSM).
+* Develop a first stage model with a VAE architecture, train it with the generated synthetic data as input and make use of model optimisation techniques such as data augmentation and normalisation to improve the converge time and generalisation of the model
+* Extract the computed environmental features from the encoder part of VAE after training the VAE.
+* Integrate the extracted environmental features and real-world data into a second stage model for training.
+* Use only real-world data to train a MLP in parallel, with the same hidden layers as the second part of the 2-stage NN for comparison.
+* Evaluate the performance of the trained 2-stage NN against the trained MLP in terms of MAE in RSRP prediction.
 
 # Getting Started
 -----------------------------------------------------------------------------------
@@ -35,6 +35,7 @@ The aim is to build a scalable, lightweight digital twin solution for the existi
 ### Install [DRIVE_Simulator](https://github.com/ioannismavromatis/DRIVE_Simulator)
 The installation process for DRIVE can be found in [userManualDRIVE.pdf](https://github.com/ioannismavromatis/DRIVE_Simulator/blob/master/doc/userManualDRIVE.pdf)
 
+<!--
 1. Install 
 
     ``
@@ -42,6 +43,8 @@ The installation process for DRIVE can be found in [userManualDRIVE.pdf](https:/
 2. Test DRIVE
 
     ``
+-->
+
 ### Install [traci4matlab](https://github.com/pipeacosta/traci4matlab)
 See instructions [here](https://github.com/pipeacosta/traci4matlab/blob/master/user_manual.pdf)
 
