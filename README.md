@@ -1,10 +1,18 @@
 # Digital Twin and Variational Autoencoder Integrated Neural Netowrk for RSRP Prediction
 -----------------------------------------------------------------------------------
-<p align="center">
-    <a href="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif">
-        <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif" width = 300 height = auto/>
-    </a>
+<!--
+User Equipment Distribution             |  UE with regard to BS
+:-------------------------:|:-------------------------:
+![](https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-Distribution.png)  |  ![](https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif)
+-->
+
+<p float="center">
+  <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-Distribution.png" height="442" width = auto/>
+  <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif" height="442" width = auto/> 
 </p>
+
+<!-- Note the spaces in the next line for Figs are special Em Space (U+2003)-->
+           Fig 1: User Equipment Distribution                  Fig 2: UE with regard to BS
 
 [![python](https://img.shields.io/badge/python-3.9.8-blue?style=plastic&logo=python)](https://www.python.org/downloads/release/python-398/)
 [![pip](https://img.shields.io/badge/pip-v21.2.4-informational?&logo=pypi)](https://pypi.org/project/pip/21.2.4/)
@@ -82,22 +90,46 @@ Any installation debugging can be found in [Debug/README.md](Debug/README.md)
 <!-- ## 3.	Latest releases -->
 <!-- ## 4.	API references -->
 
-# Running the Simulator
+# Running the DRIVE Simulator(Digital Twin)
 -----------------------------------------------------------------------------------
 <!-- TODO: Describe and show how to run your code and run the tests.  -->
 ## runSimulator.m setup output
 If the setup all goes well you should see output from [Command Window](output/DRIVE_setup/DRIVE_runSimulator_cmdWindow_output.txt),[Command Prompt](output/DRIVE_setup/Traci_ServerPort_cmd_Prompt_output.txt) & [figure](output/DRIVE_setup/fig)(which contains the simulation of ambulance, passenger&pedestrian over 200 timesteps). In addition to the main output, you should also see preprocessed *.mat* files output in a new folder (/DRIVE_Simulator/mobilityFiles/preprocessedFiles/sumo). 
 
-# Running the nn
+## Modify the DRIVE source file as required
 
-## Running nn.py:
+After running the modified DRIVE source file, DRIVE generates synthetic data {numerical(real world dataset(𝑥‚𝑦)) + spacial(Open Street Map data)} as input/data for the next stage
 
-`python3 plot.py mode` to run the script with different mode arguments.
-<!-- `python3 tff_vary_num_clients_and_rounds.py mode &` to run it in the background -->
+# Running the 2-stage Neural Network
 
+## Running VAE(1st stage):
+Use the sythetic data from the previous step as input to train the VAE
+```
+python3 src/VAE/VAE_train.py
+```
+Then extract the environmental features 𝒵(mean(μ_e) and log variance(log(σ_e))) 
+```
+python3 src/VAE/VAE_exactor.py
+```
 
-The mode you can select are: mode = `['reduction_functions', 'femnist_distribution', 'uniform_vs_num_clients_weighting', 'accuracy_10percent_vs_50percent_clients_comparison', 'accuracy_5_34_338_comparison', 'reduction_functions_comparison','updates_comparison']`
-# Contribute
+## Running MLP(2nd stage):
+
+Use the extracted environmental features(𝒵) along with numerical data (𝑥‚𝑦) to train & test a MLP for RSRP prediction
+```
+python3 src/FCN/FCN.py
+```
+Then plot the graph to see results:
+```
+python3 src/FCN/Plot_DP_results.py
+```
+
+Final output:
+<p align="center">
+    <a href="https://github.com/luke-who/Digital-Twin-4th-Year/blob/a6d488e4141b4073c8aa48e366707ed5fbbf7572/src/FCN/plot_result/MAE_boxplot.svg">
+        <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/a6d488e4141b4073c8aa48e366707ed5fbbf7572/src/FCN/plot_result/MAE_boxplot.svg" width = 500/ height=auto>
+    </a>
+</p>
+
 -----------------------------------------------------------------------------------
 <!-- TODO: Explain how other users and developers can contribute to make your code better.  -->
 
