@@ -123,7 +123,7 @@ Then plot the graph to see results:
 python3 src/FCN/Plot_DP_results.py
 ```
 
-Final output:
+Final output using Mean Average Error (MAE)
 <p align="center">
     <a href="https://github.com/luke-who/Digital-Twin-4th-Year/blob/a6d488e4141b4073c8aa48e366707ed5fbbf7572/src/FCN/plot_result/MAE_boxplot.svg">
         <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/a6d488e4141b4073c8aa48e366707ed5fbbf7572/src/FCN/plot_result/MAE_boxplot.svg" width = 500/ height=auto>
