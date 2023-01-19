@@ -7,8 +7,8 @@ User Equipment Distribution             |  UE with regard to BS
 -->
 
 <p float="center">
-  <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-Distribution.png" height="350" width = auto/>
-  <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif" height="350" width = auto/> 
+  <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-Distribution.png" height="360" width = auto/>
+  <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif" height="360" width = auto/> 
 </p>
 
 <!-- Note the spaces in the next line for Figs are special Em Space (U+2003)-->
