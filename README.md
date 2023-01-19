@@ -12,7 +12,7 @@ User Equipment Distribution             |  UE with regard to BS
 </p>
 
 <!-- Note the spaces in the next line for Figs are special Em Space (U+2003)-->
-           Fig 1: User Equipment Distribution                  Fig 2: UE with regard to BS
+           **Fig 1: User Equipment Distribution                  Fig 2: UE with regard to BS**
 
 [![python](https://img.shields.io/badge/python-3.9.8-blue?style=plastic&logo=python)](https://www.python.org/downloads/release/python-398/)
 [![pip](https://img.shields.io/badge/pip-v21.2.4-informational?&logo=pypi)](https://pypi.org/project/pip/21.2.4/)
@@ -114,7 +114,8 @@ python3 src/VAE/VAE_exactor.py
 
 ## Running MLP(2nd stage):
 
-Use the extracted environmental features(𝒵) along with numerical data (𝑥‚𝑦) to train & test a MLP for RSRP prediction
+Use the extracted environmental features(𝒵) along with numerical data (𝑥‚𝑦) as input to train & test a MLP for RSRP prediction.
+For Comparison, use only the numerical data (𝑥‚𝑦) as input to train & test MLP as baseline.
 ```
 python3 src/FCN/FCN.py
 ```
@@ -123,13 +124,15 @@ Then plot the graph to see results:
 python3 src/FCN/Plot_DP_results.py
 ```
 
-Final output using Mean Average Error (MAE)
+Final output using Mean Average Error (MAE): **2-stage NN(VAE+MLP)** vs **MLP**
 <p align="center">
     <a href="https://github.com/luke-who/Digital-Twin-4th-Year/blob/a6d488e4141b4073c8aa48e366707ed5fbbf7572/src/FCN/plot_result/MAE_boxplot.svg">
         <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/a6d488e4141b4073c8aa48e366707ed5fbbf7572/src/FCN/plot_result/MAE_boxplot.svg" width = 500/ height=auto>
     </a>
 </p>
 
+                   **Fig3: MAE boxplot for the 2-stage NN and MLP comparison**
+                      
 -----------------------------------------------------------------------------------
 <!-- TODO: Explain how other users and developers can contribute to make your code better.  -->
 
