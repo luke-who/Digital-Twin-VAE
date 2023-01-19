@@ -1,4 +1,4 @@
-# Digital Twin and Variational Autoencoder Integrated Neural Netowrk for RSRP Prediction
+# Digital Twin and Variational Autoencoder Integrated Neural Network for RSRP Prediction
 -----------------------------------------------------------------------------------
 <!--
 User Equipment Distribution             |  UE with regard to BS
