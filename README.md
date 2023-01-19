@@ -131,7 +131,7 @@ Final output using Mean Average Error (MAE): **2-stage NN(VAE+MLP)** vs **MLP**
     </a>
 </p>
 
-                  **Fig3: MAE boxplot for the 2-stage NN and MLP comparison**
+             **Fig3: MAE boxplot for the 2-stage NN and MLP comparison**
                       
 -----------------------------------------------------------------------------------
 <!-- TODO: Explain how other users and developers can contribute to make your code better.  -->
