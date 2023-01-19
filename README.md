@@ -12,7 +12,7 @@ User Equipment Distribution             |  UE with regard to BS
 </p>
 
 <!-- Note the spaces in the next line for Figs are special Em Space (U+2003)-->
-           **Fig 1: User Equipment Distribution                  Fig 2: UE with regard to BS**
+       **Fig 1: User Equipment Distribution            Fig 2: UE with regard to BS**
 
 [![python](https://img.shields.io/badge/python-3.9.8-blue?style=plastic&logo=python)](https://www.python.org/downloads/release/python-398/)
 [![pip](https://img.shields.io/badge/pip-v21.2.4-informational?&logo=pypi)](https://pypi.org/project/pip/21.2.4/)
@@ -131,7 +131,7 @@ Final output using Mean Average Error (MAE): **2-stage NN(VAE+MLP)** vs **MLP**
     </a>
 </p>
 
-                   **Fig3: MAE boxplot for the 2-stage NN and MLP comparison**
+                  **Fig3: MAE boxplot for the 2-stage NN and MLP comparison**
                       
 -----------------------------------------------------------------------------------
 <!-- TODO: Explain how other users and developers can contribute to make your code better.  -->
