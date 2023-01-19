@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 <p align="center">
     <a href="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif">
-        <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif" width = 200/>
+        <img src="https://github.com/luke-who/Digital-Twin-4th-Year/blob/main/asset/UE-BS.gif" width = 300 height = auto/>
     </a>
 </p>
 
