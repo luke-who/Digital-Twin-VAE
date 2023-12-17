@@ -24,7 +24,7 @@ User Equipment Distribution             |  UE with regard to BS
 [![build running](https://img.shields.io/badge/build-passing-brightgreen)](#)
 
 ## Motivation 
-Design and develop a scalable and lightweight signal strength prediction model with the help of a DT([DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator)) and VAE to improve prediction accuracy for the existing mobile networks.
+Design and develop a scalable and lightweight signal strength prediction model with the help of a Digital Twin (DT)([DRIVE](https://github.com/ioannismavromatis/DRIVE_Simulator)) and VAE to improve prediction accuracy for the existing mobile networks.
 ## Aim
 This project aims to explore the use of a 2-stage Neural Network (NN) which consists of a Variational Auto-Encoder(VAE) and another NN for Reference Signal Received Power (RSRP) prediction to improve QoS (Quality of Service).
 
@@ -33,8 +33,8 @@ This project aims to explore the use of a 2-stage Neural Network (NN) which cons
 * Develop a first stage model with a VAE architecture, train it with the generated synthetic data as input and make use of model optimisation techniques such as data augmentation and normalisation to improve the converge time and generalisation of the model
 * Extract the computed environmental features from the encoder part of VAE after training the VAE.
 * Integrate the extracted environmental features and real-world data into a second stage model for training.
-* Use only real-world data to train a MLP in parallel, with the same hidden layers as the second part of the 2-stage NN for comparison.
-* Evaluate the performance of the trained 2-stage NN against the trained MLP in terms of MAE in RSRP prediction.
+* Use only real-world data to train a multilayer perceptron (MLP) in parallel, with the same hidden layers as the second part of the 2-stage NN for comparison.
+* Evaluate the performance of the trained 2-stage NN against the trained MLP in terms of Mean Absolute Error (MAE) in RSRP prediction.
 
 # Getting Started
 -----------------------------------------------------------------------------------
